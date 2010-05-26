@@ -55,7 +55,8 @@ override_dh_auto_clean:
 		[ ! -f Makefile ] || $(MAKE) distclean; \
 		case "$$file" in \
 			psimediaplugin) \
-				rm -rf libgstprovider.so configure* *.log gstprovider/gstelements/static/lib/libgstelements_static.a \
+				rm -rf libgstprovider.so configure* *.log gstprovider/gstelements/static/lib/libgstelements_static.a gstprovider/libgstprovider.so.debug \
+				rm -rf gstprovider/gstelements/static/lib/libgstelements_static.prl \
 			;; \
 		esac; \
 	done

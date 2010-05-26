@@ -62,6 +62,13 @@ Description: Plugins for Psi+
   - Screenshot Plugin - make screenshot and save it to local or ftp
   - Translate Plugin - convert keyboard on hotkey
 
+Package: psi-plus-plugins-psimedia
+Architecture: any
+Depends: psi-plus, ${shlibs:Depends}, ${misc:Depends}
+Description: Plugins for Psi+
+ Psi+ Plugins:
+  - Psimedia Plugin - voice and video calls
+
 Package: psi-plus-icons
 Architecture: all
 Depends: psi-plus, ${misc:Depends}
