@@ -1,0 +1,67 @@
+#! /usr/bin/make -f
+
+QMAKE=qmake-qt4
+QCONF=qt-qconf
+
+NUMJOBS = 1
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+  NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+endif
+
+CFLAGS = -Wall -g
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+ CFLAGS += -O0
+else
+ CFLAGS += -O2
+endif
+
+CONFIGURE_FLAGS = --prefix=/usr
+# CFLAGS="$(CFLAGS)"
+
+CONFIGURE_FLAGS += --disable-bundled-qca
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	$(QCONF)
+	./configure $(CONFIGURE_FLAGS)
+
+override_dh_auto_build:
+	dh_auto_build --parallel
+	for i in $(CURDIR)/src/plugins/generic/*plugin ; do \
+		file=`basename $$i`; \
+		cd $$i; \
+		case "$$file" in \
+			psimediaplugin) \
+				$(QCONF) && ./configure && $(MAKE) -j$(NUMJOBS) && cp ./gstprovider/*.so ./ \
+			;; \
+			*) \
+				$(QMAKE) && $(MAKE) -j$(NUMJOBS) \
+			;; \
+		esac; \
+		strip ./*.so; \
+	done
+
+override_dh_auto_clean:
+	dh_clean
+	[ ! -f Makefile ] || $(MAKE) distclean
+	rm -f config.sub config.guess src/Makefile Makefile libpsi/psiwidgets/Makefile src/psi conf.pri extra.pri conf.log src/config.h src/.qmake.internal.cache psi configure.exe src/plugins/generic/psimediaplugin/conf.pri
+	rm -rf iris/lib iris/conf.pri src/.moc src/.obj src/.rcc src/.ui .qconftemp src/plugins/generic/psimediaplugin/gstprovider/gstelements/static/lib
+	for i in $(CURDIR)/src/plugins/generic/*plugin ; do \
+		file=`basename $$i`; \
+		cd $$i; \
+		[ ! -f Makefile ] || $(MAKE) distclean; \
+		case "$$file" in \
+			psimediaplugin) \
+				rm -rf libgstprovider.so configure* *.log gstprovider/gstelements/static/lib/libgstelements_static.a gstprovider/libgstprovider.so.debug \
+				rm -rf gstprovider/gstelements/static/lib/libgstelements_static.prl \
+			;; \
+		esac; \
+	done
+
+override_dh_auto_install:
+	$(MAKE) install INSTALL_ROOT=$(CURDIR)/debian/tmp
+	rm -f $(CURDIR)/debian/tmp/usr/share/psi/COPYING
+	rm -f $(CURDIR)/debian/tmp/usr/share/psi/README
