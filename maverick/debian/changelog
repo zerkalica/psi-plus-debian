@@ -1,3 +1,9 @@
+psi-plus (0.15~svn3055-1) lucid; urgency=low
+
+  * New upstream release
+
+ -- Stefan Zerkalica <zerkalica@gmail.com>  Mon, 03 May 2010 22:58:01 +0400
+
 psi-plus (0.15.2308-2) karmic; urgency=low
 
   * qconf path fix in debian/rules
