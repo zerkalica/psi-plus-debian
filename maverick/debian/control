@@ -10,7 +10,7 @@ Package: psi-plus
 Architecture: any
 Recommends: sox, libqca2-plugin-ossl, psi-plus-plugins, psi-plus-icons
 Conflicts: libqca2 (<< 2.0.0), psi, psi-translations
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt4-webkit
 Suggests: libqca2-plugin-gnupg, xdg-utils
 Provides: psi, psi-translations
 Replaces: psi, psi-translations
