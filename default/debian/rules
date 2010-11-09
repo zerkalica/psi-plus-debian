@@ -15,7 +15,8 @@ else
  CFLAGS += -O2
 endif
 
-CONFIGURE_FLAGS = --prefix=/usr --debug --separate-debug-info
+CONFIGURE_FLAGS = --prefix=/usr --debug
+# --separate-debug-info
 # --separate-debug-info
 # CFLAGS="$(CFLAGS)"
 
@@ -63,9 +64,8 @@ override_dh_auto_clean:
 
 override_dh_auto_install:
 	$(MAKE) install INSTALL_ROOT=$(CURDIR)/debian/tmp
-	strip $(CURDIR)/debian/tmp/usr/bin/psi
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/COPYING
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/README
 
-override_dh_strip:
-  dh_strip --dbg-package=psi-plus-dbg
+.PHONY: override_dh_strip:
+	dh_strip --dbg-package=psi-plus-dbg
