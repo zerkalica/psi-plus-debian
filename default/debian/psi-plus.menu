@@ -1,3 +1,0 @@
-?package(psi-plus):needs="X11" section="Applications/Network/Communication"\
-  title="Psi+" command="/usr/bin/psi"\
-  icon="/usr/share/psi/psi.xpm"

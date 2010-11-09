@@ -15,19 +15,18 @@ else
  CFLAGS += -O2
 endif
 
-CONFIGURE_FLAGS = --prefix=/usr --debug
-# --separate-debug-info
-# --separate-debug-info
-# CFLAGS="$(CFLAGS)"
+CONFIGURE_FLAGS = --prefix=/usr
 
 CONFIGURE_FLAGS += --disable-bundled-qca
+
+CONFIGURE_DEBUG= --debug --no-separate-debug-info
 
 %:
 	dh $@
 
 override_dh_auto_configure:
 	$(QCONF)
-	./configure $(CONFIGURE_FLAGS)
+	./configure $(CONFIGURE_FLAGS) $(CONFIGURE_DEBUG)
 
 override_dh_auto_build:
 	dh_auto_build --parallel
@@ -36,13 +35,13 @@ override_dh_auto_build:
 		cd $$i; \
 		case "$$file" in \
 			psimediaplugin) \
-				$(QCONF) && ./configure && $(MAKE) -j$(NUMJOBS) && cp ./gstprovider/*.so ./ \
+				$(QCONF) && ./configure $(CONFIGURE_DEBUG) && $(MAKE) -j$(NUMJOBS) && cp ./gstprovider/*.so ./ \
 			;; \
 			*) \
 				$(QMAKE) && $(MAKE) -j$(NUMJOBS) \
 			;; \
 		esac; \
-		strip ./*.so; \
+		#strip ./*.so; \
 	done
 
 override_dh_auto_clean:
@@ -67,6 +66,6 @@ override_dh_auto_install:
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/COPYING
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/README
 
-.PHONY: override_dh_strip
 override_dh_strip:
 	dh_strip --dbg-package=psi-plus-dbg
+

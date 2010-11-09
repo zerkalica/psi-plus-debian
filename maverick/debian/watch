@@ -1,4 +1,0 @@
-version=3
-opts="uversionmangle=s/([.0-9]*)/$1.0/" \
-http://code.google.com/p/psi-dev/downloads/list .*\/psi-plus-(.*)\.src\.tar\.gz \
-debian uupdate
