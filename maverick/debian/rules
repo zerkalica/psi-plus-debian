@@ -67,5 +67,6 @@ override_dh_auto_install:
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/COPYING
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/README
 
-.PHONY: override_dh_strip:
+.PHONY: override_dh_strip
+override_dh_strip:
 	dh_strip --dbg-package=psi-plus-dbg
