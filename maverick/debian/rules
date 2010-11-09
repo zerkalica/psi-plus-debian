@@ -7,7 +7,6 @@ NUMJOBS = 1
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
   NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 endif
-
 CFLAGS = -Wall -g
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
@@ -16,7 +15,8 @@ else
  CFLAGS += -O2
 endif
 
-CONFIGURE_FLAGS = --prefix=/usr
+CONFIGURE_FLAGS = --prefix=/usr --debug --separate-debug-info
+# --separate-debug-info
 # CFLAGS="$(CFLAGS)"
 
 CONFIGURE_FLAGS += --disable-bundled-qca
@@ -63,5 +63,9 @@ override_dh_auto_clean:
 
 override_dh_auto_install:
 	$(MAKE) install INSTALL_ROOT=$(CURDIR)/debian/tmp
+  strip $(CURDIR)/debian/tmp/usr/bin/psi
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/COPYING
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/README
+
+override_dh_strip:
+  dh_strip --dbg-package=psi-plus-dbg

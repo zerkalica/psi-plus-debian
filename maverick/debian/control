@@ -80,3 +80,12 @@ Architecture: all
 Depends: psi-plus, ${misc:Depends}
 Description: Skins for Psi+
  Psi+ skins from psi+ svn
+
+Package: psi-plus-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: psi-plus(=${binary:Version}), ${misc:Depends}
+Description: Debug symbols for Psi+
+ Psi+ is a fork of free instant messaging Psi
+ It has some features that Psi does not have
