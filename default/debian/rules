@@ -67,5 +67,5 @@ override_dh_auto_install:
 	rm -f $(CURDIR)/debian/tmp/usr/share/psi/README
 
 override_dh_strip:
-	dh_strip --dbg-package=psi-plus-dbg
+	dh_strip --dbg-package=psi-plus-webkit-dbg
 
