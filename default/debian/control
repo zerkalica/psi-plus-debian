@@ -55,7 +55,7 @@ Description: Jabber client using Qt
 
 Package: psi-plus-plugins
 Architecture: any
-Depends: psi-plus | psi-plus-webkit, ${shlibs:Depends}, ${misc:Depends}
+Depends: psi-plus, ${shlibs:Depends}, ${misc:Depends}
 Description: Plugins for Psi+
  Psi+ Plugins:
   - Gmailnotify Plugin - check gmail inbox and notification for new mails
@@ -65,20 +65,20 @@ Description: Plugins for Psi+
 
 Package: psi-plus-plugins-psimedia
 Architecture: any
-Depends: psi-plus | psi-plus-webkit, ${shlibs:Depends}, ${misc:Depends}, gstreamer0.10-alsa, gstreamer0.10-plugins-good
+Depends: psi-plus, ${shlibs:Depends}, ${misc:Depends}, gstreamer0.10-alsa, gstreamer0.10-plugins-good
 Description: Plugins for Psi+
  Psi+ Plugins:
   - Psimedia Plugin - voice and video calls
 
 Package: psi-plus-icons
 Architecture: all
-Depends: psi-plus | psi-plus-webkit, ${misc:Depends}
+Depends: psi-plus, ${misc:Depends}
 Description: Icons for Psi+
  Psi+ icons from psi+ svn
 
 Package: psi-plus-skins
 Architecture: all
-Depends: psi-plus | psi-plus-webkit, ${misc:Depends}
+Depends: psi-plus, ${misc:Depends}
 Description: Skins for Psi+
  Psi+ skins from psi+ svn
 
