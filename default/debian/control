@@ -12,8 +12,8 @@ Recommends: sox, libqca2-plugin-ossl, psi-plus-plugins, psi-plus-icons
 Conflicts: libqca2 (<< 2.0.0), psi, psi-translations, psi-plus-webkit-dbg
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: libqca2-plugin-gnupg, xdg-utils
-Provides: psi, psi-translations, psi-plus
-Replaces: psi, psi-translations, psi-plus
+Provides: psi, psi-translations
+Replaces: psi, psi-translations
 Description: Jabber client using Qt
  Psi+ is a fork of free instant messaging Psi
  This package contents webkit version
