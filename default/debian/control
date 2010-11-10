@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 7.0.50), qconf, quilt (>= 0.46-7~), libqtwebkit-dev
 Standards-Version: 3.9.1
 Homepage: http://psi-dev.googlecode.com/
 
-Package: psi-plus-webkit
+Package: psi-plus
 Architecture: any
 Recommends: sox, libqca2-plugin-ossl, psi-plus-plugins, psi-plus-icons
 Conflicts: libqca2 (<< 2.0.0), psi, psi-translations, psi-plus-webkit-dbg
@@ -82,11 +82,11 @@ Depends: psi-plus | psi-plus-webkit, ${misc:Depends}
 Description: Skins for Psi+
  Psi+ skins from psi+ svn
 
-Package: psi-plus-webkit-dbg
+Package: psi-plus-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: psi-plus-webkit (=${binary:Version}), ${misc:Depends}
+Depends: psi-plus (=${binary:Version}), ${misc:Depends}
 Description: Debug symbols for Psi+
  Psi+ is a fork of free instant messaging Psi
  It has some features that Psi does not have
