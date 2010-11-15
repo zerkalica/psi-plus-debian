@@ -1,0 +1,3 @@
+usr/bin/psi
+debian/psi.xpm usr/share/psi
+usr/share/applications/*

@@ -1,0 +1,4 @@
+usr/bin/psi.webkit
+debian/psi-webkit.xpm usr/share/psi
+usr/share/applications/*
+themes/* usr/share/psi/themes
