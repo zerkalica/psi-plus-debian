@@ -6,12 +6,18 @@ Build-Depends: debhelper (>= 7.0.50), qconf, quilt (>= 0.46-7~), libqtwebkit-dev
 Standards-Version: 3.9.1
 Homepage: http://psi-dev.googlecode.com/
 
+Package: psi-plus-common
+Architecture: all
+Depends: psi-plus | psi-plus-webkit, ${misc:Depends}
+Description: common files for psi plus
+ Common files for psi+ and psi+webkit
+
 Package: psi-plus
 Architecture: any
 Recommends: sox, libqca2-plugin-ossl, psi-plus-plugins, psi-plus-icons
-Conflicts: libqca2 (<< 2.0.0), psi, psi-translations, psi-plus-webkit-dbg
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Suggests: libqca2-plugin-gnupg, xdg-utils
+Conflicts: libqca2 (<< 2.0.0), psi, psi-translations, psi-plus-webkit
+Depends: ${shlibs:Depends}, ${misc:Depends}, psi-plus-common
+Suggests: libqca2-plugin-gnupg, xdg-utils, psi-plus-dbg
 Provides: psi, psi-translations
 Replaces: psi, psi-translations
 Description: Jabber client using Qt
@@ -53,9 +59,59 @@ Description: Jabber client using Qt
   - Improved action when moving to jabber-links
   - Fixed display of messages in the IRC (Nick say:)
 
+Package: psi-plus-webkit
+Architecture: any
+Recommends: sox, libqca2-plugin-ossl, psi-plus-plugins, psi-plus-icons
+Conflicts: libqca2 (<< 2.0.0), psi, psi-translations, psi-plus
+Depends: ${shlibs:Depends}, ${misc:Depends}, psi-plus-common
+Suggests: libqca2-plugin-gnupg, xdg-utils, psi-plus-webkit-dbg
+Provides: psi, psi-translations, psi-plus
+Replaces: psi, psi-translations, psi-plus
+Description: Jabber client using Qt
+ Psi+ is a fork of free instant messaging Psi
+ This package contents webkit version
+ It has some features that Psi does not have
+ Webkit version
+ .
+ Conference:
+  - Specifying the reasons for the kick / ban
+  - Easy to edit and view the topic
+  - Quick change rank and roles from the context menu in roster / chat
+  - Insert nick by click
+  - Context menu for nick in the message window
+  - User count in the conference roster
+  - Lock autologin in selected conference (at home / in the various autologin)
+  - When highlighted - pop up with text message notification
+  - Collapsing conference roster
+  - Recognition of hyperlinks in the topic of the conference log
+  - Constant nick color in conference, is set to hash nickname
+  - Turn off horizontal scrollbar in conference roster
+  - Login / autologin in the conference in background
+  - Voice / video calls, conference participants
+ .
+ System:
+  - Support delivery notification (XEP-0184: Message Receipts)
+  - Time on Issuance iq request (XEP-0090: Entity Time, XEP-0202: Entity Time)
+  - Support for jabber: iq: version (XEP-0092: Software Version)
+  - Ability to set the "class" (XEP-0108: User Activity)
+  - Support for the broadcast stream from the Audacious
+  - Added command "idle" in the console (jabber: iq: last)
+  - Making a separate status of a specific contact / conference
+  - Improved initial setup
+  - Improved and expanded the definition of operating systems
+  - Contact Manager
+  - Locate plugins directory
+  - The option to exit the application when closure roster
+  - Revised plugins subsystem
+  - Show plugin version
+  - Improved action when moving to jabber-links
+  - Fixed display of messages in the IRC (Nick say:)
+
+
 Package: psi-plus-plugins
 Architecture: any
 Depends: psi-plus, ${shlibs:Depends}, ${misc:Depends}
+Suggests: psi-plus-plugins-dbg
 Description: Plugins for Psi+
  Psi+ Plugins:
   - Gmailnotify Plugin - check gmail inbox and notification for new mails
@@ -66,6 +122,7 @@ Description: Plugins for Psi+
 Package: psi-plus-plugins-psimedia
 Architecture: any
 Depends: psi-plus, ${shlibs:Depends}, ${misc:Depends}, gstreamer0.10-alsa, gstreamer0.10-plugins-good
+Suggests: psi-plus-plugins-psimedia-dbg
 Description: Plugins for Psi+
  Psi+ Plugins:
   - Psimedia Plugin - voice and video calls
@@ -88,5 +145,32 @@ Priority: extra
 Architecture: any
 Depends: psi-plus (=${binary:Version}), ${misc:Depends}
 Description: Debug symbols for Psi+
+ Psi+ is a fork of free instant messaging Psi
+ It has some features that Psi does not have
+
+Package: psi-plus-webkit-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: psi-plus-webkit (=${binary:Version}), ${misc:Depends}
+Description: Debug symbols for Psi+ Webkit version
+ Psi+ is a fork of free instant messaging Psi
+ It has some features that Psi does not have
+
+Package: psi-plus-plugins-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: psi-plus-plugins (=${binary:Version}), ${misc:Depends}
+Description: Debug symbols for Psi+ plugins
+ Psi+ is a fork of free instant messaging Psi
+ It has some features that Psi does not have
+
+Package: psi-plus-plugins-psimedia-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: psi-plus-plugins-psimedia (=${binary:Version}), ${misc:Depends}
+Description: Debug symbols for Psi+ psimedia plugin
  Psi+ is a fork of free instant messaging Psi
  It has some features that Psi does not have
