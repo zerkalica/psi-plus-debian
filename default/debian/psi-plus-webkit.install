@@ -1,4 +1,4 @@
-usr/bin/psi.webkit
-debian/psi-webkit.xpm usr/share/psi
+usr/bin/psi-plus.webkit
+debian/psi-plus-webkit.xpm usr/share/psi-plus
 usr/share/applications/*
-themes/* usr/share/psi/themes
+themes/* usr/share/psi-plus/themes

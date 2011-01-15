@@ -1,4 +1,4 @@
-share/* usr/share/psi
-lang/* usr/share/psi
+share/* usr/share/psi-plus
+lang/* usr/share/psi-plus
 usr/share/icons/*
-usr/share/psi/*
+usr/share/psi-plus/*

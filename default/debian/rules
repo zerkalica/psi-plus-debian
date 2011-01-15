@@ -65,12 +65,12 @@ override_dh_auto_clean:
 
 override_dh_auto_install:
 	$(MAKE) install INSTALL_ROOT=$(CURDIR)/debian/tmp
-	rm -f $(CURDIR)/debian/tmp/usr/share/psi/COPYING
-	rm -f $(CURDIR)/debian/tmp/usr/share/psi/README
+	rm -f $(CURDIR)/debian/tmp/usr/share/psi-plus-plus/COPYING
+	rm -f $(CURDIR)/debian/tmp/usr/share/psi-plus-plus/README
 	$(MAKE) clean
 	./configure $(CONFIGURE_FLAGS) $(CONFIGURE_DEBUG) --enable-webkit
 	$(MAKE) -j$(NUMJOBS)
-	cp $(CURDIR)/src/psi $(CURDIR)/debian/tmp/usr/bin/psi.webkit
+	cp $(CURDIR)/src/psi-plus $(CURDIR)/debian/tmp/usr/bin/psi-plus.webkit
 
 override_dh_strip:
 	dh_strip -ppsi-plus --dbg-package=psi-plus-dbg
