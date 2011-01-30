@@ -23,6 +23,8 @@ CONFIGURE_FLAGS += --disable-bundled-qca
 
 CONFIGURE_DEBUG= --debug --no-separate-debug-info
 
+CONFIGURE_FLAGS += --enable-plugins
+
 %:
 	dh $@
 
